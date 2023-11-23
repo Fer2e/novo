@@ -1,0 +1,522 @@
+  <!--doctype html-->
+  <html>
+    <html lang="PT-BR"></html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--==Title==================================-->
+    <title>Vida Saudavel</title>
+    <!--==Stylesheet=============================-->
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="banner.css"/>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!--==Fav-icon===============================-->
+    <link rel="shortcut icon" href="images/fav-icon.png"/>
+    <!--==Using-Font-Awesome=====================-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!--==Import-Font-Family======================-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!--==Navigation================================-->
+        <nav class="navigation" id="navbar">
+            <!--logo-------->
+            <a href="index.html" class="logo">
+              <img alt="apple" src="Logo---Vida-Saudavel-e-CIA.png">
+                <span>V</span>ida Saudavel
+            </a>
+            <!--menu-btn---->
+            <input type="checkbox" class="menu-btn" id="menu-btn">
+            <label for="menu-btn" class="menu-icon">
+                <span class="nav-icon"></span>
+            </label>
+            <!--menu-------->
+            <ul class="menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#category">Categorias</a></li>
+                <li><a href="#popular-bundle-pack">Receitas</a></li>
+                <li><a href="#download-app">App</a></li>
+            </ul>
+            <!--right-nav-(cart-like)-->
+            <div class="right-nav">
+                <!--like----->
+                <a href="#" class="like">
+                    <i class="far fa-heart"></i>
+                    <span>0</span>
+                </a>
+                <!--cart----->
+                <a href="#" class="cart" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="contadorCarrinho">0</span>
+                </a>
+<!-- Dropdown do Carrinho -->
+<div id="cartDropdown" class="cart-dropdown">
+    <ul id="cartItemList"></ul>
+    <p>Total: R$ <span id="cartTotal">0.00</span></p>
+    <button onclick="checkout()">Finalizar Compra</button>
+    <button onclick="clearCart()" class="clear-cart-button">Limpar Carrinho</button>
+</div>
+
+
+        </nav>
+        <!--nav-end--------------------->
+        <!--==Search-banner=======================================-->
+        <section id="search-banner">
+            <!--bg--------->
+            <img alt="bg" class="bg-1" src="img/test.png">
+
+            <!--text------->
+            <div class="search-banner-text">
+                <h1>Encomende suas compras diárias</h1>
+                <strong>#Entrega grátis</strong>
+                <!--search-box------>
+                <form action="" class="search-box">
+                    <!--icon------>
+                    <i class="fas fa-search"></i>
+                    <!--input----->
+                    <input type="text" class="search-input" placeholder=" Pesquise suas compras diárias" name="search" required>
+                    <!--btn------->
+                    <input type="submit" class="search-btn" value="Search">
+                </form>
+            </div>
+        </section>
+        <!--search-banner-end--------------->
+        <!--==category=========================================-->
+        <section id="category">
+            <!--heading---------------->
+            <div class="category-heading">
+                <h2>Categoria</h2>
+                <span>Todas</span>
+            </div>
+            <!--box-container---------->
+            <div class="category-container">
+                <!--box---------------->
+                <a href="#" class="category-box">
+                    <img alt="Fish" src="img/Capturar.PNG">
+                    <span>Receitas</span>
+                </a>
+                <!--box---------------->
+                <a href="#" class="category-box">
+                    <img alt="Fish" src="img/vegetais.png">
+                    <span>Vegetais</span>
+                </a>
+                <!--box---------------->
+                <a href="#" class="category-box">
+                    <img alt="Fish" src="img/frutas.png">
+                    <span>Frutas</span>
+                </a>
+                <!--box---------------->
+                <a href="#" class="category-box">
+                    <img alt="Fish" src="img/su.png">
+                    <span>Bebidas</span>
+                </a>
+                <!--box---------------->
+                <a href="#" class="category-box">
+                  <img alt="Fish" src="img/fit-removebg-preview.png">
+                  <span>Fitness</span>
+              </a>
+                <!--box---------------->
+                <a href="#" class="category-box">
+                    <img alt="Fish" src="img/vegan-removebg-preview.png">
+                    <span>Vegano</span>
+                </a>
+                <!--box---------------->
+   
+            </div>
+            
+
+
+
+
+        </section>
+        <!--category-end----------------------------------->
+        <!--==Products====================================-->
+        <section id="popular-product">
+            <!--heading----------->
+            <div class="product-heading">
+                <h3>Popular</h3>
+                <span>Todos</span>
+            </div>
+            <!--box-container------>
+            <div class="product-container">
+                <!-- Box 1 -->
+                <div class="product-box">
+                    <img alt="melancia" src="img/melancia.png">
+                    <strong>Melancia</strong>
+                    <span class="quantity">1 und</span>
+                    <span class="price">R$ 2,00</span>
+                    <!-- Cart-btn -->
+                    <button class="cart-btn" onclick="addToCart('Melancia', 2.00)">
+                        <i class="fas fa-shopping-bag"></i> Comprar
+                    </button>
+                    <!-- Like-btn -->
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+              
+                <!--box---------->
+                <div class="product-box">
+                    <img alt="apple" src="img/pita.png">
+                    <strong>Pitaya</strong>
+                    <span class="quantity">1 und</span>
+                    <span class="price">3</span>
+                    <!--cart-btn------->
+                    <button class="cart-btn" onclick="addToCart('Pitaya', 3.00)">
+                        <i class="fas fa-shopping-bag"></i> Comprar
+                    </button>
+                    
+                    <!--like-btn------->
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+                <!--box---------->
+                <div class="product-box">
+                    <img alt="apple" src="img/batata.png">
+                    <strong>Batata Doce</strong>
+                    <span class="quantity">1 und</span>
+                    <span class="price">1</span>
+                    <!--cart-btn------->
+                    <button class="cart-btn" onclick="addToCart('Batata Doce', 1.00)">
+                        <i class="fas fa-shopping-bag"></i> Comprar
+                    </button>
+                    <!--like-btn------->
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+                <!--box---------->
+                <div class="product-box">
+                    <img alt="apple" src="img/sorvete.png">
+                    <strong>Sorvete Vegano</strong>
+                    <span class="quantity">500ml</span>
+                    <span class="price">2,2</span>
+                    <!--cart-btn------->
+                    <button class="cart-btn" onclick="addToCart('Sorvete Vegan', 2.02)">
+                        <i class="fas fa-shopping-bag"></i> Comprar
+                    </button>
+                    <!--like-btn------->
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+                <!--box---------->
+                <div class="product-box">
+                    <img alt="apple" src="img/fit.png">
+                    <strong>Barra de Cereal Nutry</strong>
+                    <span class="quantity">22g</span>
+                    <span class="price">3</span>
+                    <!--cart-btn------->
+                    <button class="cart-btn" onclick="addToCart('Barra de Cereal Nutry',3.00)">
+                        <i class="fas fa-shopping-bag"></i> Comprar
+                    </button>
+                    <!--like-btn------->
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+                <!--box---------->
+                <div class="product-box">
+                    <img alt="apple" src="img/Noite-removebg-preview.png">
+                    <strong>Chás Iamaní Orgânicos</strong>
+                    <span class="quantity">1 und</span>
+                    <span class="price">1,4</span>
+                    <!--cart-btn------->
+                    <button class="cart-btn" onclick="addToCart('Chás Iamaní Orgânicos',1.04)">
+                        <i class="fas fa-shopping-bag"></i> Comprar
+                    </button>
+                    <!--like-btn------->
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+<section id="banner">
+        <div id="banner-text">
+          <strong  >Vegano</strong>
+          <span>From $10</span>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <a href="#">Shop now</a>
+      </div>
+        <div class="banner-img" alt="banner">
+          <img src="img/Novo Projeto.png" alt="banner">
+        </div>
+          </div>
+        </section>
+
+
+        <!--popular-product-end--------------------->
+        <!--Popular-bundle-pack===================================-->
+        <section id="popular-bundle-pack">
+            <!--heading-------------->
+            <div class="product-heading">
+                <h3>Receitas Populares</h3>
+            </div>
+            <!--box-container------>
+            <div class="product-container">
+                <!--box---------->
+                <div class="product-box">
+                    <img alt="pack" src="img/smo.png">
+                    <strong>Smoothie Verde Energizante</strong>
+                    <span class="quantity">1 banana congelada,
+                        1 xícara de espinafre fresco
+                       +6</span>
+                    <span class="price">9</span>
+                    <!--cart-btn------->
+                    <a href="#" class="cart-btn">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <!--like-btn------->
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+                <!--box---------->
+                <div class="product-box">
+                    <img alt="apple" src="img/avo.png">
+                    <strong>Salada de Quinoa com Legumes Assados</strong>
+                    <span class="quantity">1 xícara de quinoa cozida
+                        1 abobrinha média, +5</span>
+                    <span class="price">5</span>
+                    <!--cart-btn------->
+                    <a href="#" class="cart-btn">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <!--like-btn------->
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+                <!--box---------->
+                <div class="product-box">
+                    <img alt="apple" src="img/tuf.png">
+                    <strong>Tofu Grelhado </strong>
+                    <span class="quantity">250g de tofu firme,
+                        2 colheres de sopa de molho ,7+</span>
+                    <span class="price">3</span>
+                    <!--cart-btn------->
+                    <a href="#" class="cart-btn">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <!--like-btn------->
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+                <!--box---------->
+                <div class="product-box">
+                    <img alt="pack" src="img/frango.png">
+                    <strong>Frango Grelhado com Limão e Ervas</strong>
+                    <span class="quantity">4 peitos de frango desossados e sem pele
+                        Suco de 2 limões,+4</span>
+                    <span class="price">9</span>
+                    <!--cart-btn------->
+                    <a href="#" class="cart-btn">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <!--like-btn------->
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+                <!--box---------->
+                <div class="product-box">
+                    <img alt="apple" src="img/wrap.png">
+                    <strong>Wrap de Frango com Abacate</strong>
+                    <span class="quantity">2 peitos de frango cozidos e desfiados
+                        4 wraps de trigo integral,+6</span>
+                    <span class="price">5</span>
+                    <!--cart-btn------->
+                    <a href="#" class="cart-btn">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <!--like-btn------->
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+                <!--box---------->
+                <div class="product-box">
+                    <img alt="apple" src="img/banana.png">
+                    <strong>Bolo de Banana com Aveia e Nozes</strong>
+                    <span class="quantity">2 bananas maduras amassadas
+                        1 xícara de aveia em flocos, 6+</span>
+                    <span class="price">3</span>
+                    <!--cart-btn------->
+                    <a href="#" class="cart-btn">
+                        <i class="fas fa-shopping-bag"></i> Add Cart
+                    </a>
+                    <!--like-btn------->
+                    <a href="#" class="like-btn">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!--popular-bundle-pack-end-------------------------------->
+        <!--==Clients===============================================-->
+        <section id="clients">
+            <!--heading---------------->
+            <div class="client-heading">
+                <h3>Feedback</h3>
+            </div>
+            <!--box-container---------->
+            <div class="client-box-container">
+                <!--box------------->
+                <div class="client-box">
+                    <!--==profile===-->
+                    <div class="client-profile">
+                        <!--img--->
+                        <img alt="client" src="images/client-1.jpg">
+                        <!--text-->
+                        <div class="profile-text">
+                            <strong>James Mcavoy</strong>
+                            <span>CEO</span>
+                        </div>
+                    </div>
+                    <!--==Rating======-->
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <!--==comments===-->
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat ea id, itaque architecto atque mollitia aperiam voluptatem consequatur incidunt sed placeat, harum recusandae quaerat at hic labore eius laborum quas!</p>
+                </div>
+                <!--box------------->
+                <div class="client-box">
+                    <!--==profile===-->
+                    <div class="client-profile">
+                        <!--img--->
+                        <img alt="client" src="images/client-2.jpg">
+                        <!--text-->
+                        <div class="profile-text">
+                            <strong>Adward Mcavoy</strong>
+                            <span>Software Developer</span>
+                        </div>
+                    </div>
+                    <!--==Rating======-->
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <!--==comments===-->
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat ea id, itaque architecto atque mollitia aperiam voluptatem consequatur incidunt sed placeat, harum recusandae quaerat at hic labore eius laborum quas!</p>
+                </div>
+                <!--box------------->
+                <div class="client-box">
+                    <!--==profile===-->
+                    <div class="client-profile">
+                        <!--img--->
+                        <img alt="client" src="images/client-3.jpg">
+                        <!--text-->
+                        <div class="profile-text">
+                            <strong>Ava Alex</strong>
+                            <span>Marketer</span>
+                        </div>
+                    </div>
+                    <!--==Rating======-->
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <!--==comments===-->
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat ea id, itaque architecto atque mollitia aperiam voluptatem consequatur incidunt sed placeat, harum recusandae quaerat at hic labore eius laborum quas!</p>
+                </div>
+            </div>
+        </section>
+        <!--client-section-end---------->
+        <!--==Partnre-logo================================-->
+        <section id="partner">
+            <!--heading------------>
+            <div class="partner-heading">
+                <h3>Nosso parceiro de confiança</h3>
+            </div>
+            <!--logo-container----->
+            <div class="logo-container">
+                <img alt="logo" src="images/logo-1.png">
+                <img alt="logo" src="images/logo-2.png">
+                <img alt="logo" src="images/logo-3.png">
+                <img alt="logo" src="images/logo-4.png">
+            </div>
+        </section>
+        <!--logo-section-end--------------------->
+        <!--==download-app====================================-->
+        <section id="download-app">
+            <!--img----------------------->
+            <div class="app-img">
+                <img alt="app" src="img/celu.png">
+            </div>
+            <!--text---------------------->
+            <div class="download-app-text">
+                <strong>Download App</strong>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officiis, ratione, non doloribus similique nam aliquam doloremque, ipsa neque voluptas at recusandae est cumque ipsum. Vel sint libero odit placeat?</p>
+                <!--btns------->
+                <div class="download-btns">
+                    <a href="#"><img alt="" src="img/app.PNG"></a>
+                    <a href="#"><img alt="" src="img/goog.PNG"></a>
+                </div>
+            </div>
+        </section>
+        <!--download-app-section-end------------------------->
+        <!--==Footer=============================================-->
+        <footer>
+            <div class="footer-container">
+                <!--logo-container------>
+                <div class="footer-logo">
+                    <a href="#"><span>V</span>ida Saudavel</a>
+                    <!--social----->
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <!--links------------------------->
+            <div class="footer-links">
+                <strong>Produtos</strong>
+                <ul>
+                    <li><a href="#">Clothes</a></li>
+                    <li><a href="#">Packages</a></li>
+                    <li><a href="#">Popular</a></li>
+                    <li><a href="#">New</a></li>
+                </ul>
+            </div>
+            <!--links------------------------->
+            <div class="footer-links">
+                <strong>Category</strong>
+                <ul>
+                    <li><a href="#">Beauty</a></li>
+                    <li><a href="#">Meats</a></li>
+                    <li><a href="#">Kids</a></li>
+                    <li><a href="#">Clothes</a></li>
+                </ul>
+            </div>
+            <!--links-------------------------->
+            <div class="footer-links">
+                <strong>Contact</strong>
+                <ul>
+                    <li><a href="#">Phone : +123456789</a></li>
+                    <li><a href="#">Email : Example@gmail.com</a></li>
+                </ul>
+            </div>
+            </div>
+        </footer>
+    </body>
+    </html>

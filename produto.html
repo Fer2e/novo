@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto Nike</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        .mosaico {
+            flex: 2;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            overflow: hidden;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        .imagem {
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .imagem img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .imagem img:hover {
+            transform: scale(1.1);
+        }
+
+        .detalhes {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f5f5f5;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .diretorio {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        h2, p {
+            margin: 0;
+            color: #333;
+        }
+
+        .tamanhos {
+            margin-top: 20px;
+        }
+
+        .tamanhos label {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .quantidade {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quantidade label {
+            display: block;
+            margin-right: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .quantidade input[type="number"] {
+            width: 50px;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .preco {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .frete {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .avaliacao {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+
+        .avaliacao label {
+            margin-right: 10px;
+        }
+
+        .estrela {
+            display: inline-block;
+            font-size: 24px;
+            color: #ffcc00;
+            cursor: pointer;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 15px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .descricao {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="mosaico">
+            <div class="imagem">
+                <img src="img/Noite-removebg-preview.png" alt="Nike Product 1">
+            </div>
+            <div class="imagem">
+                <img src="img/Noite-removebg-preview.png" alt="Nike Product 2">
+            </div>
+            <div class="imagem">
+                <img src="img/Noite-removebg-preview.png" alt="Nike Product 3">
+            </div>
+            <div class="imagem">
+                <img src="img/Noite-removebg-preview.png" alt="Nike Product 4">
+            </div>
+        </div>
+
+        <div class="detalhes">
+            <div class="diretorio">
+                Frutas
+            </div>
+            <h2>Produto Nike</h2>
+
+            <div class="preco">
+                Preço: R$ 99,99
+            </div>
+
+            <div class="tamanhos">
+                <label for="pequeno"><input type="checkbox" id="pequeno" name="tamanho" value="pequeno"> Pequeno</label>
+                <label for="medio"><input type="checkbox" id="medio" name="tamanho" value="medio"> Médio</label>
+                <label for="grande"><input type="checkbox" id="grande" name="tamanho" value="grande"> Grande</label>
+            </div>
+
+            <div class="quantidade">
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade" value="1" min="1">
+            </div>
+
+            <div class="frete">
+                Calcule o frete: <input type="text" placeholder="Informe o CEP">
+            </div>
+
+            <div class="avaliacao">
+                <label for="avaliacao">Avaliação:</label>
+                <div class="estrela" onclick="avaliar(1)">★</div>
+                <div class="estrela" onclick="avaliar(2)">★</div>
+                <div class="estrela" onclick="avaliar(3)">★</div>
+                <div class="estrela" onclick="avaliar(4)">★</div>
+                <div class="estrela" onclick="avaliar(5)">★</div>
+            </div>
+
+            <button onclick="comprar()">Comprar</button>
+
+            <p class="descricao">Descrição do produto: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac justo nec urna facilisis congue. Sed euismod diam eu neque varius, eu accumsan nunc tincidunt.</p>
+        </div>
+    </div>
+
+    <script>
+        function comprar() {
+            var tamanhosSelecionados = [];
+            var checkboxes = document.getElementsByName("tamanho");
+            
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    tamanhosSelecionados.push(checkbox.value);
+                }
+            });
+
+            var quantidade = document.getElementById("quantidade").value;
+
+            alert("Produto comprado! Tamanhos selecionados: " + tamanhosSelecionados.join(", ") + ". Quantidade: " + quantidade);
+        }
+
+        function avaliar(quantidadeEstrelas) {
+            alert("Avaliação: " + quantidadeEstrelas + " estrelas");
+        }
+    </script>
+
+</body>
+</html>

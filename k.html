@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos Saudáveis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .filter {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .product-list {
+            flex: 2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .product-item {
+            width: calc(33.33% - 20px);
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .filter-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .filter-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Produtos Saudáveis</h1>
+    </header>
+
+    <div class="container">
+        <div class="filter">
+            <h2>Working with Filters</h2>
+            <ul class="filter-list">
+                <li class="filter-item">
+                    <label>
+                        <input type="checkbox" name="category" value="receitas"> Receitas
+                    </label>
+                </li>
+                <li class="filter-item">
+                    <label>
+                        <input type="checkbox" name="category" value="vegetais"> Vegetais
+                    </label>
+                </li>
+                <li class="filter-item">
+                    <label>
+                        <input type="checkbox" name="category" value="frutas"> Frutas
+                    </label>
+                </li>
+                <li class="filter-item">
+                    <label>
+                        <input type="checkbox" name="category" value="bebidas"> Bebidas
+                    </label>
+                </li>
+                <li class="filter-item">
+                    <label>
+                        <input type="checkbox" name="category" value="fitness"> Fitness
+                    </label>
+                </li>
+                <li class="filter-item">
+                    <label>
+                        <input type="checkbox" name="category" value="vegano"> Vegano
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <div class="product-list">
+            <div class="product-item" data-category="receitas">
+                <img src="https://via.placeholder.com/150" alt="Product Image" class="product-image">
+                <h3>Receita Saudável</h3>
+                <p>Descrição da receita saudável.</p>
+            </div>
+
+            <div class="product-item" data-category="vegetais">
+                <img src="https://via.placeholder.com/150" alt="Product Image" class="product-image">
+                <h3>Variety Vegetal</h3>
+                <p>Descrição de uma seleção de vegetais frescos.</p>
+            </div>
+
+            <div class="product-item" data-category="frutas">
+                <img src="https://via.placeholder.com/150" alt="Product Image" class="product-image">
+                <h3>Frutas Frescas</h3>
+                <p>Descrição de uma variedade de frutas frescas.</p>
+            </div>
+
+            <div class="product-item" data-category="bebidas">
+                <img src="https://via.placeholder.com/150" alt="Product Image" class="product-image">
+                <h3>Bebida Refrescante</h3>
+                <p>Descrição de uma bebida saudável e refrescante.</p>
+            </div>
+
+            <div class="product-item" data-category="fitness">
+                <img src="https://via.placeholder.com/150" alt="Product Image" class="product-image">
+                <h3>Equipamento Fitness</h3>
+                <p>Descrição de equipamentos para um estilo de vida fitness.</p>
+            </div>
+
+            <div class="product-item" data-category="vegano">
+                <img src="https://via.placeholder.com/150" alt="Product Image" class="product-image">
+                <h3>Opções Veganas</h3>
+                <p>Descrição de opções de alimentos veganos.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function (checkbox) {
+                checkbox.addEventListener('change', filterProducts);
+            });
+
+            function filterProducts() {
+                const selectedCategories = getSelectedValues('category');
+
+                const products = document.querySelectorAll('.product-item');
+
+                products.forEach(function (product) {
+                    const category = product.getAttribute('data-category');
+
+                    const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
+
+                    if (categoryMatch) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            }
+
+            function getSelectedValues(filterName) {
+                const checkboxes = document.querySelectorAll(`input[name="${filterName}"]:checked`);
+                return Array.from(checkboxes).map(function (checkbox) {
+                    return checkbox.value;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+    

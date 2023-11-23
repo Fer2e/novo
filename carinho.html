@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!--==Fav-icon===============================-->
+    <link rel="shortcut icon" href="images/fav-icon.png"/>
+    <!--==Using-Font-Awesome=====================-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!--==Import-Font-Family======================-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Minha Loja</title>
+</head>
+<body>
+
+    
+<div class="cart" onclick="toggleCart()">
+    <i class="fas fa-shopping-cart"></i>
+    <span id="contadorCarrinho">0</span>
+    <!-- Dropdown do Carrinho -->
+    <div id="cartDropdown" class="cart-dropdown">
+        <ul id="cartItemList"></ul>
+        <p>Total: R$ <span id="cartTotal">0.00</span></p>
+        <button onclick="checkout()">Finalizar Compra</button>
+    </div>
+</div>
+
+<div class="product-box">
+    <img alt="melancia" src="img/melancia.png">
+    <strong>Melancia</strong>
+    <span class="quantity">1 und</span>
+    <span class="price">R$ 2,00</span>
+    <!-- Cart-btn -->
+    <button class="cart-btn" onclick="addToCart('Melancia', 2.00)">
+        <i class="fas fa-shopping-bag"></i> Comprar
+    </button>
+    <!-- Like-btn -->
+    <button class="like-btn">
+        <i class="far fa-heart"></i>
+    </button>
+</div>
+
+<style>
+    /* Adicione o estilo para o modal do carrinho */
+    .cart-dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-dropdown ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-dropdown li {
+    margin-bottom: 8px;
+}
+
+.cart-dropdown button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.cart-dropdown button:hover {
+    background-color: #45a049;
+}
+</style>
+<script>
+let cartCount = 0;
+let cartItems = [];
+
+function addToCart(productName, price) {
+    const existingItem = cartItems.find(item => item.name === productName);
+
+    if (existingItem) {
+        // Se o item já existe no carrinho, incrementa a quantidade
+        existingItem.quantity++;
+    } else {
+        // Se o item não existe no carrinho, adiciona como um novo item
+        cartItems.push({
+            name: productName,
+            price: price,
+            quantity: 1
+        });
+    }
+
+    // Atualiza o contador do carrinho
+    updateCartCount();
+
+    // Atualiza a lista do carrinho
+    updateCartList();
+
+    // Atualiza o total do carrinho
+    updateCartTotal();
+}
+
+function updateCartCount() {
+    cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    document.getElementById('contadorCarrinho').innerText = cartCount;
+}
+
+function updateCartList() {
+    const cartItemList = document.getElementById('cartItemList');
+    cartItemList.innerHTML = '';
+
+    // Adiciona cada item à lista
+    cartItems.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${item.name} - ${item.quantity} und - R$ ${item.price.toFixed(2)}`;
+        cartItemList.appendChild(listItem);
+    });
+}
+
+function updateCartTotal() {
+    const cartTotalElement = document.getElementById('cartTotal');
+    const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    cartTotalElement.textContent = total.toFixed(2);
+}
+
+function toggleCart() {
+    const cartDropdown = document.getElementById('cartDropdown');
+    cartDropdown.style.display = cartDropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+function checkout() {
+    // Aqui você pode adicionar a lógica para finalizar a compra
+    // Por exemplo, limpar o carrinho e redirecionar para a página de pagamento.
+    cartItems = []; // Limpa o carrinho
+    updateCartList();
+    updateCartTotal();
+    document.getElementById('contadorCarrinho').innerText = 0;
+    toggleCart(); // Fecha o dropdown do carrinho
+}
+
+// ... (código anterior)
+
+</script>
+</body>
+</html>
