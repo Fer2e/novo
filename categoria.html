@@ -1,0 +1,328 @@
+  <!--doctype html-->
+  <html>
+    <html lang="PT-BR"></html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--==Title==================================-->
+    <title>Vida Saudavel</title>
+    <!--==Stylesheet=============================-->
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="banner.css"/>
+    <script src="carinho.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!--==Fav-icon===============================-->
+    <link rel="shortcut icon" href="images/fav-icon.png"/>
+    <!--==Using-Font-Awesome=====================-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!--==Import-Font-Family======================-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!--==Navigation================================-->
+        <nav class="navigation" id="navbar">
+            <!--logo-------->
+            <a href="index.html" class="logo">
+              <img alt="apple" src="Logo---Vida-Saudavel-e-CIA.png">
+                <span>V</span>ida Saudavel
+            </a>
+            <!--menu-btn---->
+            <input type="checkbox" class="menu-btn" id="menu-btn">
+            <label for="menu-btn" class="menu-icon">
+                <span class="nav-icon"></span>
+            </label>
+            <!--menu-------->
+            <ul class="menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="k.html">Categorias</a></li>
+                <li><a href="#popular-bundle-pack">Receitas</a></li>
+                <li><a href="#download-app">App</a></li>
+            </ul>
+            <!--right-nav-(cart-like)-->
+            <div class="right-nav">
+                <!--like----->
+                <a href="#" class="like">
+                    <i class="far fa-heart"></i>
+                    <span>0</span>
+                </a>
+                <!--cart----->
+                <a href="#" class="cart" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="contadorCarrinho">0</span>
+                </a>
+<!-- Dropdown do Carrinho -->
+<div id="cartDropdown" class="cart-dropdown">
+    <ul id="cartItemList"></ul>
+    <p>Total: R$ <span id="cartTotal">0.00</span></p>
+    <button onclick="checkout()">Finalizar Compra</button>
+    <button onclick="clearCart()" class="clear-cart-button">Limpar Carrinho</button>
+</div>
+
+
+        </nav>
+        <!--nav-end--------------------->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+ 
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .filter {
+            margin-top: 40px;
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-right: 20px;
+            width:329%;
+            height: 100%;
+        }
+
+        .product-list {
+            flex: 2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .product-item {
+            width: calc(33.33% - 20px);
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .filter-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .filter-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="filter">
+            <h2>Filters</h2>
+            <ul class="filter-list">
+                <li class="filter-item">
+                    <label>
+                        <input type="checkbox" name="category" value="receitas"> Receitas
+                    </label>
+                </li>
+                <li class="filter-item">
+                    <label>
+                        <input type="checkbox" name="category" value="vegetais"> Vegetais
+                    </label>
+                </li>
+                <li class="filter-item">
+                    <label>
+                        <input type="checkbox" name="category" value="frutas"> Frutas
+                    </label>
+                </li>
+                <li class="filter-item">
+                    <label>
+                        <input type="checkbox" name="category" value="bebidas"> Bebidas
+                    </label>
+                </li>
+                <li class="filter-item">
+                    <label>
+                        <input type="checkbox" name="category" value="fitness"> Fitness
+                    </label>
+                </li>
+                <li class="filter-item">
+                    <label>
+                        <input type="checkbox" name="category" value="vegano"> Vegano
+                    </label>
+                </li>
+            </ul>
+        </div>
+    
+        <div class="product-container">
+            <!-- Box 1 -->
+            <div class="product-box">
+                <img alt="melancia"    data-category="receitas" src="img/melancia.png">
+                <strong>Melancia</strong>
+                <span class="quantity">1 und</span>
+                <span class="price">R$ 2,00</span>
+                <!-- Cart-btn -->
+                <button class="cart-btn" onclick="addToCart('Melancia', 2.00)">
+                    <i class="fas fa-shopping-bag"></i> Comprar
+                </button>
+                <!-- Like-btn -->
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+          
+            <div class="product-box">
+                <img alt="apple"  data-category="vegetais" src="img/pita.png">
+                <strong>Pitaya</strong>
+                <span class="quantity">1 und</span>
+                <span class="price">3</span>
+                <!--cart-btn------->
+                <button class="cart-btn" onclick="addToCart('Pitaya', 3.00)">
+                    <i class="fas fa-shopping-bag"></i> Comprar
+                </button>
+                
+                <!--like-btn------->
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+            <div class="product-box">
+                <img alt="apple"  data-category="frutas" src="img/pita.png">
+                <strong>Pitaya</strong>
+                <span class="quantity">1 und</span>
+                <span class="price">3</span>
+                <!--cart-btn------->
+                <button class="cart-btn" onclick="addToCart('Pitaya', 3.00)">
+                    <i class="fas fa-shopping-bag"></i> Comprar
+                </button>
+                
+                <!--like-btn------->
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+
+            <div class="product-box">
+                <img alt="apple"  data-category="bebidas" src="img/pita.png">
+                <strong>Pitaya</strong>
+                <span class="quantity">1 und</span>
+                <span class="price">3</span>
+                <!--cart-btn------->
+                <button class="cart-btn" onclick="addToCart('Pitaya', 3.00)">
+                    <i class="fas fa-shopping-bag"></i> Comprar
+                </button>
+                
+                <!--like-btn------->
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+
+            <div class="product-box">
+                <img alt="apple"  data-category="fitness" src="img/pita.png">
+                <strong>Pitaya</strong>
+                <span class="quantity">1 und</span>
+                <span class="price">3</span>
+                <!--cart-btn------->
+                <button class="cart-btn" onclick="addToCart('Pitaya', 3.00)">
+                    <i class="fas fa-shopping-bag"></i> Comprar
+                </button>
+                
+                <!--like-btn------->
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+
+            <div class="product-box">
+                <img alt="apple"  data-category="vegano" src="img/pita.png">
+                <strong>Pitaya</strong>
+                <span class="quantity">1 und</span>
+                <span class="price">3</span>
+                <!--cart-btn------->
+                <button class="cart-btn" onclick="addToCart('Pitaya', 3.00)">
+                    <i class="fas fa-shopping-bag"></i> Comprar
+                </button>
+                
+                <!--like-btn------->
+                <a href="#" class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="footer-links">
+        <strong>Category</strong>
+        <ul>
+            <li><a href="#">Bebidas</a></li>
+            <li><a href="#">Vegetais</a></li>
+            <li><a href="#">Frutas</a></li>
+            <li><a href="#">Receitas</a></li>
+            <li><a href="#">Fitness</a></li>
+            <li><a href="#">Vegano</a></li>
+        </ul>
+    </div>
+    <!--links-------------------------->
+    <div class="footer-links">
+        <strong>Contato</strong>
+        <ul>
+            <li><a href="#">Phone : +123456789</a></li>
+            <li><a href="#">Email : VidaSaudavel@gmail.com</a></li>
+        </ul>
+    </div>
+    </div>
+</footer>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function (checkbox) {
+                checkbox.addEventListener('change', filterProducts);
+            });
+
+            function filterProducts() {
+                const selectedCategories = getSelectedValues('category');
+
+                const products = document.querySelectorAll('.product-item');
+
+                products.forEach(function (product) {
+                    const category = product.getAttribute('data-category');
+
+                    const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
+
+                    if (categoryMatch) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            }
+
+            function getSelectedValues(filterName) {
+                const checkboxes = document.querySelectorAll(`input[name="${filterName}"]:checked`);
+                return Array.from(checkboxes).map(function (checkbox) {
+                    return checkbox.value;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+    
